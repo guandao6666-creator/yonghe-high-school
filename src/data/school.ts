@@ -21,7 +21,16 @@ export interface TimelineItem {
 }
 
 export interface CampusTile {
-  key: 'gate' | 'zhili' | 'track' | 'zhixing' | 'blossom' | 'inscription' | 'canteen' | 'kitchen' | 'dining';
+  key:
+    | 'gate'
+    | 'zhili'
+    | 'track'
+    | 'zhixing'
+    | 'blossom'
+    | 'inscription'
+    | 'aerial'
+    | 'atrium'
+    | 'dining';
   title: string;
   desc: string;
   photo: string;
@@ -152,18 +161,18 @@ export const campusTiles: CampusTile[] = [
     photoAlt: '校门内墙上的金色校名题字与落款',
   },
   {
-    key: 'canteen',
-    title: '食堂 · 今日菜色',
-    desc: '刚出锅的时令小炒，一份份分装到餐盘，等待开餐。',
-    photo: '/photos/canteen-food.jpg',
-    photoAlt: '食堂操作台上摆满分装好的菜盘',
+    key: 'aerial',
+    title: '航拍 · 校园全景',
+    desc: '从空中看红砖楼群、银灰穹顶与两侧的红色跑道，整个校园尽收眼底。',
+    photo: '/photos/aerial-gate.jpg',
+    photoAlt: '从空中俯瞰永和高中校园，红砖楼群、穹顶与跑道',
   },
   {
-    key: 'kitchen',
-    title: '食堂 · 明厨亮灶',
-    desc: '后厨师傅在操作间现炒，口罩与工作服齐备，操作流程看得见。',
-    photo: '/photos/canteen-cook.jpg',
-    photoAlt: '穿工作服、戴口罩的食堂师傅在大锅前炒菜',
+    key: 'atrium',
+    title: '中庭 · 校训标语',
+    desc: '校园中庭的地面上写着校训「永怀梦想 和衷共济」。',
+    photo: '/photos/aerial-campus.jpg',
+    photoAlt: '校园中庭航拍，地面校训标语清晰可见',
   },
   {
     key: 'dining',

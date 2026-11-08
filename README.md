@@ -29,6 +29,6 @@ npm run preview  # 预览构建产物
 
 - 只使用公开可查资料；2026 招生简章因微信验证码未取得具体数字，招生页仅 FAQ 与到校信息。
 - 抖音内容仅采集画面，无音频转写；视频描述基于实际采样画面与页面文案。
-- 校门、知理楼、知行楼、运动场、春日花枝、校名题字、走廊均为学校师生提供的实拍照片（用户提供）；首页航拍照片（`aerial-gate.jpg`、`aerial-campus.jpg`）截取自公开抖音视频（@printf，2026-07-03），仅用于本站展示。另 3 张食堂照片（`canteen-food.jpg`、`canteen-cook.jpg`、`canteen-dining.jpg`）截取自学校官方抖音视频（@永和高中，2026-06-10）。首页首屏为 8 张实拍轮播（`/photos/hero-gate.jpg`、`aerial-gate.jpg`、`zhili.jpg`、`corridor.jpg`、`track.jpg`、`aerial-campus.jpg`、`canteen-food.jpg`、`canteen-cook.jpg`），自动切换 + 左右箭头 + 圆点切换 + 手机左右滑动 + 键盘方向键，`prefers-reduced-motion` 时停止自动播放。
+- 校门、知理楼、知行楼、运动场、春日花枝、校名题字、走廊均为学校师生提供的实拍照片（用户提供）；首页航拍照片（`aerial-gate.jpg`、`aerial-campus.jpg`）截取自公开抖音视频（@printf，2026-07-03），仅用于本站展示。另 1 张食堂用餐照片（`canteen-dining.jpg`）截取自学校官方抖音视频（@永和高中，2026-06-10）。首页首屏为 8 张实拍轮播（`/photos/hero-gate.jpg`、`aerial-gate.jpg`、`zhili.jpg`、`corridor.jpg`、`track.jpg`、`aerial-campus.jpg`、`canteen-dining.jpg`、`blossom.jpg`），自动切换 + 左右箭头 + 圆点切换 + 手机左右滑动 + 键盘方向键，`prefers-reduced-motion` 时停止自动播放。
 - 本站不冒充学校官方站点。
 
