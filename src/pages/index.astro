@@ -1,6 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import HeroArt from '../components/HeroArt.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import VideoCard from '../components/VideoCard.astro';
 import Crest from '../components/Crest.astro';
@@ -43,9 +42,17 @@ const previewTiles = campusTiles.slice(0, 3);
           <a class="btn btn-ghost" href="/campus/">看看校园</a>
         </div>
       </div>
-      <div class="hero-art">
-        <HeroArt />
-      </div>
+      <figure class="hero-photo reveal">
+        <img
+          src="/photos/hero-gate.jpg"
+          alt="傍晚的永和高中校门：银灰穹顶、红砖主楼与金色校名题字"
+          width="1400"
+          height="1050"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <figcaption>校门 · 傍晚</figcaption>
+      </figure>
     </div>
   </section>
 

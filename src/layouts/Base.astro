@@ -18,7 +18,9 @@ const fullTitle =
     ? '固始县永和高级中学 · 永怀梦想，和衷共济'
     : `${title} · 固始县永和高级中学`;
 
-const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://xn--fiq18monwfu6b.love').href;
+// 对外展示统一用中文域名（IDN）；DNS 与证书的机器形式由 GitHub Pages 的 CNAME 处理
+const SITE_ORIGIN = 'https://永和高中.love';
+const canonical = `${SITE_ORIGIN}${Astro.url.pathname}`;
 const siteName = '固始县永和高级中学 · 学校信息站';
 ---
 
@@ -90,6 +92,23 @@ const siteName = '固始县永和高级中学 · 学校信息站';
       } else {
         items.forEach((el) => el.classList.add('is-visible'));
       }
+
+      // 复制本站地址（文中直接给中文域名，粘贴出来就是「永和高中.love」）
+      document.querySelectorAll('.copy-link').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const text = btn.getAttribute('data-copy') || '';
+          const original = btn.textContent;
+          try {
+            await navigator.clipboard.writeText(text);
+            btn.textContent = '已复制';
+          } catch {
+            btn.textContent = text;
+          }
+          setTimeout(() => {
+            btn.textContent = original;
+          }, 2200);
+        });
+      });
     </script>
   </body>
 </html>

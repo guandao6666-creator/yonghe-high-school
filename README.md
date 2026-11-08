@@ -2,7 +2,7 @@
 
 非官方、个人学习用途的学校资料整理站。Astro 静态站，6 个页面 + 404 页，桌面端与移动端适配。
 
-- 线上：<https://永和高中.love>（punycode `xn--fiq18monwfu6b.love`）
+- 线上：<https://永和高中.love>（页面 canonical/og:url/页脚均展示中文域名；punycode `xn--fiq18monwfu6b.love` 仅用于 DNS 与证书）
 - 资料文档：上层目录 `../research/`（学校档案、抖音内容采集）
 - 参考图：`../assets/reference/`
 
@@ -19,8 +19,9 @@ npm run preview  # 预览构建产物
 
 推送到 `main` 即触发 GitHub Actions（`.github/workflows/deploy.yml`）自动构建并发布到 GitHub Pages。
 
-- 自定义域名：`xn--fiq18monwfu6b.love`（`public/CNAME`）
-- `astro.config.mjs` 的 `site` 决定 canonical / sitemap 使用的域名
+- 自定义域名：`xn--fiq18monwfu6b.love`（`public/CNAME`，punycode 为 DNS 必需形式）
+- `Base.astro` 中 canonical / og:url 用中文域名常量输出，`astro.config.mjs` 的 `site` 与 `public/sitemap.xml` 仍用 punycode 保证技术正确
+- 页脚「复制本站地址」按钮复制 `https://永和高中.love`
 - 页面：`/` `/about/` `/campus/` `/news/` `/admissions/` `/contact/` `/404.html`
 - SEO：`public/robots.txt`、`public/sitemap.xml`
 
@@ -28,5 +29,5 @@ npm run preview  # 预览构建产物
 
 - 只使用公开可查资料；2026 招生简章因微信验证码未取得具体数字，招生页仅 FAQ 与到校信息。
 - 抖音内容仅采集画面，无音频转写；视频描述基于实际采样画面与页面文案。
-- 校门/校园插画为示意图并在页面标注，非实拍照片。
+- 校门、知理楼、知行楼、运动场、春日花枝、校名题字、走廊均为学校师生提供的实拍照片（用户提供），仅用于本站展示；首页首屏为实拍校门。
 - 本站不冒充学校官方站点。
