@@ -4,13 +4,18 @@ import SectionTitle from '../components/SectionTitle.astro';
 import VideoCard from '../components/VideoCard.astro';
 import { campusTiles, campusNote, campusPhoto } from '../data/school';
 import { videos } from '../data/videos';
+import type { VideoItem } from '../data/videos';
 
-const campusVideos = [videos[5], videos[1], videos[2]];
+const campusVideos = [
+  videos.find((v) => v.tag === '校园风光'),
+  videos.find((v) => v.title.includes('战场上的汗水')),
+  videos.find((v) => v.title.includes('体考出征')),
+].filter((v): v is VideoItem => v !== undefined);
 ---
 
 <Base
   title="校园风光"
-  description="永和高中校园实拍：红砖教学楼、银灰穹顶、大校门、运动场、春日花枝、校名题字与食堂。"
+  description="永和高中校园实拍：红砖教学楼、银灰穹顶、大校门、航拍全景、运动场、春日花枝、校名题字与食堂。"
 >
   <section class="page-hero">
     <div class="container page-hero-inner">
