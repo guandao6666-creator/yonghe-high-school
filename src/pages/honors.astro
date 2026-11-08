@@ -7,7 +7,7 @@ import { honorRoll, honorRollSources, honorRollNote, eventHonors } from '../data
 
 <Base
   title="荣誉榜"
-  description="永和高中荣誉榜：2026 年高考录取速递（节选 12 位同学）、学校荣誉与教学成绩、县田径运动会与体考出征等赛事活动。"
+  description="永和高中荣誉榜：2026 年高考录取速递（节选 18 位同学）、学校荣誉与教学成绩、县田径运动会与体考出征等赛事活动。"
 >
   <section class="page-hero">
     <div class="container page-hero-inner">
@@ -30,7 +30,7 @@ import { honorRoll, honorRollSources, honorRollNote, eventHonors } from '../data
         <SectionTitle
           kicker="Honor Roll 2026"
           title="2026 届<em>录取速递</em>"
-          desc="以下 12 位同学来自学校「2026 年高考录取速递（一）」「（三）」喜报画面，按视频出现顺序整理。"
+          desc="以下 18 位同学来自学校「2026 年高考录取速递（一）（二）（三）」：（一）（三）为抖音喜报画面，（二）为学校微信公众号文章，按批次与出现顺序整理。"
         />
       </div>
       <div class="honor-grid">
@@ -120,7 +120,7 @@ import { honorRoll, honorRollSources, honorRollNote, eventHonors } from '../data
           honorRollSources.map((source) => (
             <li>
               <a href={source.url} target="_blank" rel="noopener noreferrer">
-                {source.label}（抖音公开视频）
+                {source.label}
               </a>
             </li>
           ))

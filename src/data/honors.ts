@@ -1,13 +1,14 @@
 export interface HonorStudent {
   name: string;
   university: string;
-  batch: '录取速递（一）' | '录取速递（三）';
+  batch: '录取速递（一）' | '录取速递（二）' | '录取速递（三）';
 }
 
 /**
  * 2026 年高考录取速递（节选）
- * 来源：抖音公开视频中的学校「2026 年高考录取速递（一）」「（三）」喜报画面，
- * 按视频出现顺序整理，仅收录画面中可辨认的姓名与录取院校。
+ * 来源：抖音公开视频中的「2026 年高考录取速递（一）」「（三）」喜报画面，
+ * 以及学校微信公众号《弦歌不辍育桃李，春华秋实结硕果——永和高中应届班高考录取速递（二）》
+ * （2026-07-30 发布），按批次与出现顺序整理，仅收录姓名与录取院校。
  */
 export const honorRoll: HonorStudent[] = [
   { name: '管泽奥', university: '大连理工大学', batch: '录取速递（一）' },
@@ -16,6 +17,12 @@ export const honorRoll: HonorStudent[] = [
   { name: '谢中天', university: '郑州大学', batch: '录取速递（一）' },
   { name: '余泳河', university: '郑州大学', batch: '录取速递（一）' },
   { name: '陈若愚', university: '郑州大学', batch: '录取速递（一）' },
+  { name: '李冠霖', university: '郑州大学', batch: '录取速递（二）' },
+  { name: '叶永青', university: '郑州大学', batch: '录取速递（二）' },
+  { name: '李鑫元', university: '苏州大学', batch: '录取速递（二）' },
+  { name: '黄小戈', university: '陕西师范大学', batch: '录取速递（二）' },
+  { name: '宋一凡', university: '江南大学', batch: '录取速递（二）' },
+  { name: '钱向磊', university: '石河子大学', batch: '录取速递（二）' },
   { name: '魏乐', university: '中央财经大学', batch: '录取速递（三）' },
   { name: '席诺', university: '郑州大学', batch: '录取速递（三）' },
   { name: '张欣怡', university: '中南财经政法大学', batch: '录取速递（三）' },
@@ -26,17 +33,21 @@ export const honorRoll: HonorStudent[] = [
 
 export const honorRollSources = [
   {
-    label: '2026 年高考录取速递（一）',
+    label: '2026 年高考录取速递（一）（抖音）',
     url: 'https://www.douyin.com/video/7668125434832602356',
   },
   {
-    label: '2026 年高考录取速递（三）',
+    label: '2026 年高考录取速递（二）（学校公众号）',
+    url: 'https://mp.weixin.qq.com/s/TM3m63MA_OYPQF_xFHsbRw',
+  },
+  {
+    label: '2026 年高考录取速递（三）（抖音）',
     url: 'https://www.douyin.com/video/7669589407124503202',
   },
 ];
 
 export const honorRollNote =
-  '名单整理自抖音公开视频中的学校「2026 年高考录取速递」喜报画面，节选 12 位同学、按视频出现顺序排列；视频结尾的复习生招生咨询电话未在站点展示。本站为非官方整理站点，名单与院校以学校官方发布为准；如涉隐私请联系我们处理。';
+  '名单整理自学校公开的「2026 年高考录取速递（一）（二）（三）」（（一）（三）为抖音喜报画面，（二）为学校微信公众号文章），节选 18 位同学、按批次与出现顺序排列；宣传材料中的复习生招生咨询电话未在站点展示。本站为非官方整理站点，名单与院校以学校官方发布为准；如涉隐私请联系我们处理。';
 
 export interface EventHonor {
   year: string;
