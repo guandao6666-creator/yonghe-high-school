@@ -3,7 +3,6 @@ import Base from '../layouts/Base.astro';
 import HeroArt from '../components/HeroArt.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import VideoCard from '../components/VideoCard.astro';
-import SceneArt from '../components/SceneArt.astro';
 import Crest from '../components/Crest.astro';
 import {
   school,
@@ -132,8 +131,13 @@ const previewTiles = campusTiles.slice(0, 3);
         {
           previewTiles.map((tile) => (
             <a class={`tile tile--${tile.key} reveal`} href="/campus/">
-              <span class="tile-bg" />
-              <SceneArt scene={tile.key} />
+              <img
+                class="tile-photo"
+                src={tile.photo}
+                alt={tile.photoAlt}
+                loading="lazy"
+                decoding="async"
+              />
               <div class="tile-body">
                 <h3>{tile.title}</h3>
                 <p>{tile.desc}</p>
@@ -143,7 +147,7 @@ const previewTiles = campusTiles.slice(0, 3);
         }
       </div>
       <p style="margin-top:22px;font-size:12px;color:var(--muted)">
-        图中为根据公开画面绘制的示意图，正式照片素材整理中。
+        校园实拍照片由学校师生提供。
       </p>
     </div>
   </section>

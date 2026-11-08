@@ -21,9 +21,11 @@ export interface TimelineItem {
 }
 
 export interface CampusTile {
-  key: 'gate' | 'building' | 'track' | 'classroom' | 'autumn' | 'cat';
+  key: 'gate' | 'zhili' | 'track' | 'zhixing' | 'blossom' | 'inscription';
   title: string;
   desc: string;
+  photo: string;
+  photoAlt: string;
 }
 
 export const school = {
@@ -109,35 +111,53 @@ export const achievements = [
 export const campusTiles: CampusTile[] = [
   {
     key: 'gate',
-    title: '校门 · 红砖与穹顶',
-    desc: '红砖主楼、银灰穹顶与石柱门楼，是永和高中最醒目的门面。',
+    title: '校门 · 穹顶与校名',
+    desc: '银灰穹顶、石柱门楼与金色的校名题字，是永和高中最醒目的门面。',
+    photo: '/photos/gate.jpg',
+    photoAlt: '傍晚的永和高中校门，穹顶主楼与校名题字墙',
   },
   {
-    key: 'building',
-    title: '红砖楼群',
-    desc: '教学楼围合中央穹顶建筑，红色跑道与绿茵场铺展在楼群一旁。',
+    key: 'zhili',
+    title: '知理楼 · 红砖楼群',
+    desc: '红砖立面与香樟树影，是很多永和人对教学楼的第一印象。',
+    photo: '/photos/zhili.jpg',
+    photoAlt: '红色砖墙的知理楼与楼前的香樟树',
   },
   {
     key: 'track',
-    title: '运动场',
+    title: '运动场 · 红色跑道',
     desc: '红色跑道环绕绿茵场，运动会、课间跑操都在这里进行。',
+    photo: '/photos/track.jpg',
+    photoAlt: '红色跑道与远处的红砖教学楼、绿树',
   },
   {
-    key: 'classroom',
-    title: '教室与课堂',
-    desc: '交互白板、蓝色窗帘与红白校服，是永和课堂的日常画面。',
+    key: 'zhixing',
+    title: '知行楼 · 草坪与步道',
+    desc: '红砖楼身配着楼前草坪与步道，是校园里安静的一角。',
+    photo: '/photos/zhixing.jpg',
+    photoAlt: '知行楼与楼前的草坪、步道和树木',
   },
   {
-    key: 'autumn',
-    title: '秋日校园',
-    desc: '落叶、钢琴与秋阳——「所以你有偶尔会想起永和的秋吗？」',
+    key: 'blossom',
+    title: '春日 · 花枝与红墙',
+    desc: '春天白花缀满枝头，红墙前是永和最上镜的季节。',
+    photo: '/photos/blossom.jpg',
+    photoAlt: '红砖墙前盛开的白花枝条',
   },
   {
-    key: 'cat',
-    title: '校园猫「永和老学长」',
-    desc: '穿蓝色毛衣的常驻校猫，被师生称作「永和老学长」。',
+    key: 'inscription',
+    title: '校名题字 · 姜春云题',
+    desc: '校门内墙上的金色校名题字，落款「姜春云题」。',
+    photo: '/photos/inscription.jpg',
+    photoAlt: '校门内墙上的金色校名题字与落款',
   },
 ];
 
+export const campusPhoto = {
+  src: '/photos/corridor.jpg',
+  alt: '傍晚的走廊，窗外是落日与「和馨」楼',
+  caption: '傍晚的走廊，窗外是落日与「和馨」楼。',
+};
+
 export const campusNote =
-  '以上为根据学校官方抖音公开画面整理的示意图，正式照片素材整理中。';
+  '校园实拍照片由学校师生提供，仅用于本站展示；如涉版权请联系我们删除。';

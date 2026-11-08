@@ -688,21 +688,21 @@ button {
   border-radius: 18px;
   color: var(--cream);
   isolation: isolate;
+  background: #20110e;
 }
 
-.tile-bg {
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-}
-
-.tile .scene {
+.tile-photo {
   position: absolute;
   inset: 0;
   z-index: -1;
   width: 100%;
   height: 100%;
-  opacity: 0.6;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.tile:hover .tile-photo {
+  transform: scale(1.04);
 }
 
 .tile::after {
@@ -710,7 +710,12 @@ button {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: linear-gradient(180deg, rgba(20, 10, 8, 0) 32%, rgba(20, 10, 8, 0.74));
+  background: linear-gradient(
+    180deg,
+    rgba(20, 10, 8, 0) 18%,
+    rgba(20, 10, 8, 0.32) 46%,
+    rgba(20, 10, 8, 0.86) 100%
+  );
 }
 
 .tile-body {
@@ -730,28 +735,25 @@ button {
   color: rgba(247, 242, 232, 0.8);
 }
 
-.tile--gate .tile-bg {
-  background: linear-gradient(160deg, #93b9d8 0%, #d8c7a6 72%, #c9a97c 100%);
+.photo-band {
+  margin: 30px 0 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #20110e;
 }
 
-.tile--building .tile-bg {
-  background: linear-gradient(160deg, #b4573f 0%, #8c2b22 55%, #5b1813 100%);
+.photo-band img {
+  display: block;
+  width: 100%;
+  max-height: 460px;
+  object-fit: cover;
 }
 
-.tile--track .tile-bg {
-  background: linear-gradient(160deg, #4a8a5c 0%, #2d6b45 55%, #1c4a31 100%);
-}
-
-.tile--classroom .tile-bg {
-  background: linear-gradient(160deg, #57798c 0%, #35505f 55%, #233847 100%);
-}
-
-.tile--autumn .tile-bg {
-  background: linear-gradient(160deg, #d09555 0%, #a8602f 55%, #7a3f22 100%);
-}
-
-.tile--cat .tile-bg {
-  background: linear-gradient(160deg, #7d8f9b 0%, #4b5c68 55%, #33434f 100%);
+.photo-band figcaption {
+  padding: 13px 20px 15px;
+  font-size: 12.5px;
+  color: var(--muted);
+  background: var(--paper);
 }
 
 /* --------------------------------- videos --------------------------------- */
