@@ -19,23 +19,45 @@ const previewTiles = campusTiles.slice(0, 3);
 const heroSlides = [
   {
     src: '/photos/hero-gate.jpg',
+    width: 1400,
+    height: 1050,
     alt: '傍晚的永和高中校门：银灰穹顶、红砖主楼与金色校名题字',
     caption: '校门 · 傍晚',
   },
   {
+    src: '/photos/aerial-gate.jpg',
+    width: 1200,
+    height: 900,
+    alt: '从空中俯瞰永和高中：红砖楼群、银灰穹顶、校门与两侧的红色跑道',
+    caption: '校园 · 航拍',
+  },
+  {
     src: '/photos/zhili.jpg',
+    width: 1200,
+    height: 900,
     alt: '红砖立面的知理楼，楼身有金色「知理楼」三字',
     caption: '知理楼 · 红砖与香樟',
   },
   {
     src: '/photos/corridor.jpg',
+    width: 1244,
+    height: 700,
     alt: '傍晚的走廊，窗外是落日与「和馨」楼',
     caption: '走廊 · 落日',
   },
   {
     src: '/photos/track.jpg',
+    width: 1200,
+    height: 900,
     alt: '红色跑道与绿茵场，远处是红砖教学楼和成排绿树',
     caption: '运动场 · 红色跑道',
+  },
+  {
+    src: '/photos/aerial-campus.jpg',
+    width: 1200,
+    height: 900,
+    alt: '校园中庭航拍，地面的校训标语写着「永怀梦想 和衷共济」',
+    caption: '中庭 · 校训标语',
   },
 ];
 ---
@@ -65,7 +87,13 @@ const heroSlides = [
           <a class="btn btn-ghost" href="/campus/">看看校园</a>
         </div>
       </div>
-      <figure class="hero-photo hero-carousel reveal" data-carousel>
+      <figure
+        class="hero-photo hero-carousel reveal"
+        data-carousel
+        tabindex="0"
+        role="group"
+        aria-label="校园照片轮播"
+      >
         <div class="carousel-viewport">
           {
             heroSlides.map((slide, i) => (
@@ -77,8 +105,8 @@ const heroSlides = [
                 <img
                   src={slide.src}
                   alt={slide.alt}
-                  width="1400"
-                  height="1050"
+                  width={slide.width}
+                  height={slide.height}
                   loading={i === 0 ? 'eager' : 'lazy'}
                   fetchpriority={i === 0 ? 'high' : 'auto'}
                   decoding="async"
@@ -88,6 +116,38 @@ const heroSlides = [
           }
         </div>
         <figcaption class="carousel-caption">{heroSlides[0].caption}</figcaption>
+        <button
+          class="carousel-arrow prev"
+          type="button"
+          data-dir="-1"
+          aria-label="上一张校园照片"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              d="M15 5 8 12l7 7"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </button>
+        <button
+          class="carousel-arrow next"
+          type="button"
+          data-dir="1"
+          aria-label="下一张校园照片"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              d="m9 5 7 7-7 7"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"></path>
+          </svg>
+        </button>
         <div class="carousel-dots" hidden>
           {
             heroSlides.map((slide, i) => (
@@ -248,8 +308,10 @@ const heroSlides = [
     if (carousel) {
       const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
       const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
+      const arrows = Array.from(carousel.querySelectorAll('.carousel-arrow'));
       const caption = carousel.querySelector('.carousel-caption');
       const dotsWrap = carousel.querySelector('.carousel-dots');
+      const viewport = carousel.querySelector('.carousel-viewport');
 
       if (slides.length > 1 && dotsWrap) {
         const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -280,6 +342,11 @@ const heroSlides = [
           timer = window.setInterval(() => show(index + 1), 5200);
         };
 
+        const step = (dir: number) => {
+          show(index + dir);
+          start();
+        };
+
         dotsWrap.hidden = false;
         dots.forEach((dot, i) =>
           dot.addEventListener('click', () => {
@@ -287,6 +354,45 @@ const heroSlides = [
             start();
           })
         );
+
+        arrows.forEach((arrow) =>
+          arrow.addEventListener('click', () => step(Number(arrow.dataset.dir) || 1))
+        );
+
+        // 手机 / 触控板：左右滑动切换
+        let startX = 0;
+        let startY = 0;
+        let tracking = false;
+        viewport?.addEventListener('pointerdown', (event) => {
+          if (event.pointerType === 'mouse') return;
+          tracking = true;
+          startX = event.clientX;
+          startY = event.clientY;
+        });
+        viewport?.addEventListener('pointerup', (event) => {
+          if (!tracking) return;
+          tracking = false;
+          const dx = event.clientX - startX;
+          const dy = event.clientY - startY;
+          if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+            step(dx < 0 ? 1 : -1);
+          }
+        });
+        viewport?.addEventListener('pointercancel', () => {
+          tracking = false;
+        });
+
+        // 键盘：聚焦后左右方向键切换
+        carousel.addEventListener('keydown', (event) => {
+          if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            step(-1);
+          } else if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            step(1);
+          }
+        });
+
         carousel.addEventListener('pointerenter', stop);
         carousel.addEventListener('pointerleave', start);
         carousel.addEventListener('focusin', stop);
