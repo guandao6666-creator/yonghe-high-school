@@ -143,6 +143,12 @@ button {
   gap: 12px;
 }
 
+.crest {
+  display: block;
+  flex: none;
+  border-radius: 50%;
+}
+
 .brand-text .cn {
   font-family: var(--font-serif);
   font-size: 18px;
