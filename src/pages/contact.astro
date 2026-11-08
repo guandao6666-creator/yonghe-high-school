@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import { school } from '../data/school';
+
+const mapUrl =
+  'https://map.baidu.com/search/%E5%9B%BA%E5%A7%8B%E5%8E%BF%E6%B0%B8%E5%92%8C%E9%AB%98%E7%BA%A7%E4%B8%AD%E5%AD%A6';
+const douyinUrl =
+  'https://www.douyin.com/search/%E5%9B%BA%E5%A7%8B%E5%8E%BF%E6%B0%B8%E5%92%8C%E9%AB%98%E7%BA%A7%E4%B8%AD%E5%AD%A6';
+---
+
+<Base
+  title="联系我们"
+  description="固始县永和高级中学联系信息：学校地址、地图坐标与官方抖音账号入口。"
+>
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <nav class="breadcrumb" aria-label="面包屑">
+        <a href="/">首页</a>
+        <span>/</span>
+        <span>联系我们</span>
+      </nav>
+      <h1>联系我们</h1>
+      <p>
+        学校位于固始县城北环路中段。正式联系电话与招生咨询方式仍在整理，以下为公开可查的到校与线上入口。
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle kicker="Find Us" title="地址与线上入口" />
+      </div>
+      <div class="grid grid--2">
+        <article class="card reveal">
+          <h3 style="font-size:19px">学校地址</h3>
+          <p style="margin-top:14px;font-size:15px;color:var(--ink-2)">{school.address}</p>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted)">
+            地图坐标：{school.coords.lng}, {school.coords.lat}
+          </p>
+          <p style="margin-top:22px">
+            <a class="btn btn-primary" href={mapUrl} target="_blank" rel="noopener noreferrer">
+              百度地图导航 ↗
+            </a>
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <h3 style="font-size:19px">官方线上账号</h3>
+          <p style="margin-top:14px;color:var(--muted)">
+            学校在抖音的认证账号会发布校园活动、教学动态与通知。本站视频资料即整理自这些公开内容。
+          </p>
+          <p style="margin-top:22px">
+            <a class="btn btn-primary" href={douyinUrl} target="_blank" rel="noopener noreferrer">
+              在抖音中搜索 ↗
+            </a>
+          </p>
+        </article>
+      </div>
+
+      <div class="grid grid--2 reveal" style="margin-top:20px">
+        <article class="card">
+          <h3 style="font-size:19px">关于本站</h3>
+          <p style="margin-top:14px;font-size:14.5px;color:var(--muted)">
+            本站是个人制作的非官方校园信息整理站点，用于前端学习与内容归档，不代表学校立场。
+            页面资料整理自百度百科与学校官方抖音账号公开内容。
+          </p>
+        </article>
+        <article class="card">
+          <h3 style="font-size:19px">信息纠错</h3>
+          <p style="margin-top:14px;font-size:14.5px;color:var(--muted)">
+            如发现信息与学校官方发布不一致，请以学校公布为准。联系方式与校园平面图等资料补齐后，
+            本页会同步更新。
+          </p>
+        </article>
+      </div>
+
+      <div class="notice reveal" style="margin-top:32px;font-size:13px">
+        学校的正式联系电话、邮箱与微信公众号信息尚未核实，故未在此列出，避免误导。
+      </div>
+    </div>
+  </section>
+</Base>

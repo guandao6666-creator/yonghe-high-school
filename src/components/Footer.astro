@@ -1,0 +1,56 @@
+---
+import Crest from './Crest.astro';
+import { school } from '../data/school';
+
+const navLinks = [
+  { href: '/about/', label: '学校简介' },
+  { href: '/campus/', label: '校园风光' },
+  { href: '/news/', label: '校园动态' },
+  { href: '/admissions/', label: '招生信息' },
+  { href: '/contact/', label: '联系我们' },
+];
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <Crest size={54} />
+          <div>
+            <p class="name">{school.name}</p>
+            <p class="motto">{school.motto}</p>
+          </div>
+        </div>
+        <p style="margin-top:18px;max-width:34ch;font-size:12.5px;color:rgba(247,242,232,.55)">
+          本站为非官方校园信息整理站点，用于前端学习与内容归档；学校信息以官方发布为准。
+        </p>
+      </div>
+
+      <div class="footer">
+        <h4>浏览</h4>
+        <ul>
+          {navLinks.map((link) => (
+            <li><a href={link.href}>{link.label}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer">
+        <h4>地址</h4>
+        <ul>
+          <li>{school.address}</li>
+          <li>坐标 {school.coords.lng}, {school.coords.lat}</li>
+          <li><a href="https://map.baidu.com/search/%E5%9B%BA%E5%A7%8B%E5%8E%BF%E6%B0%B8%E5%92%8C%E9%AB%98%E7%BA%A7%E4%B8%AD%E5%AD%A6" target="_blank" rel="noopener noreferrer">在百度地图中查看 ↗</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      <span>© {year} 永和高中资料站 · 仅供学习交流</span>
+      <span>资料整理自：百度百科、学校官方抖音账号公开内容</span>
+    </div>
+  </div>
+</footer>

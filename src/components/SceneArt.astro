@@ -1,0 +1,112 @@
+---
+interface Props {
+  scene: 'gate' | 'building' | 'track' | 'classroom' | 'autumn' | 'cat';
+}
+const { scene } = Astro.props;
+---
+
+<svg
+  class="scene"
+  viewBox="0 0 400 260"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2.4"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  preserveAspectRatio="xMidYMid meet"
+>
+  {
+    scene === 'gate' && (
+      <g>
+        <path d="M24 218h352" opacity=".55" />
+        <path d="M120 218v-86h160v86" opacity=".95" />
+        <path d="M148 132a52 52 0 0 1 104 0" />
+        <path d="M148 132h-26v86M252 132h26v86" opacity=".6" />
+        <path d="M94 154H72v64M306 154h22v64" opacity=".45" />
+        <circle cx="58" cy="126" r="4.5" />
+        <circle cx="342" cy="126" r="4.5" />
+        <path d="M196 218v-42a14 14 0 0 1 28 0v42" opacity=".9" />
+        <path d="M120 158h160" opacity=".3" />
+        <path d="M170 132v-16h80v16" opacity=".5" />
+      </g>
+    )
+  }
+  {
+    scene === 'building' && (
+      <g>
+        <path d="M18 222h364" opacity=".5" />
+        <path d="M156 222V112h96v110" opacity=".95" />
+        <path d="M176 112a28 28 0 0 1 56 0" />
+        <path d="M156 112h-58v110M252 112h58v110" opacity=".75" />
+        <path d="M168 136h20v24h-20zM196 136h20v24h-20zM168 172h20v24h-20zM196 172h20v24h-20z" opacity=".4" />
+        <path d="M112 140h24v22h-24zM112 176h24v22h-24zM280 140h24v22h-24zM280 176h24v22h-24z" opacity=".35" />
+        <path d="M204 222v-40h30v40" opacity=".55" />
+        <ellipse cx="330" cy="196" rx="40" ry="16" opacity=".35" />
+        <ellipse cx="330" cy="196" rx="28" ry="9" opacity=".25" />
+        <path d="M60 96a14 14 0 0 1 20 0M86 110a10 10 0 0 1 14 0" opacity=".4" />
+        <circle cx="86" cy="64" r="14" opacity=".35" />
+      </g>
+    )
+  }
+  {
+    scene === 'track' && (
+      <g>
+        <ellipse cx="200" cy="140" rx="152" ry="66" />
+        <ellipse cx="200" cy="140" rx="120" ry="46" opacity=".55" />
+        <path d="M200 74v132" opacity=".18" />
+        <path d="M56 120c30-8 62-12 96-12M344 120c-30-8-62-12-96-12" opacity=".25" />
+        <circle cx="132" cy="118" r="6" />
+        <path d="M132 124v24l-10 18M132 140l12 16" opacity=".8" />
+        <circle cx="264" cy="150" r="6" />
+        <path d="M264 156v22l10 16M264 168l-12 18" opacity=".8" />
+        <path d="M24 226h352" opacity=".35" />
+      </g>
+    )
+  }
+  {
+    scene === 'classroom' && (
+      <g>
+        <rect x="92" y="56" width="216" height="104" rx="2" />
+        <path d="M112 86h72M112 104h140M112 122h104" opacity=".5" />
+        <path d="M240 86h44" opacity=".25" />
+        <path d="M58 206h284" opacity=".5" />
+        <path d="M86 206v-34M314 206v-34" opacity=".35" />
+        <path d="M104 188h44M126 188v18M104 206h44" opacity=".55" />
+        <path d="M168 196h30M183 196v12M168 208h30" opacity=".45" />
+        <path d="M252 196h30M267 196v12M252 208h30" opacity=".45" />
+        <path d="M200 60v96" opacity=".12" />
+      </g>
+    )
+  }
+  {
+    scene === 'autumn' && (
+      <g>
+        <path d="M200 224v-84" />
+        <path d="M200 170l-42-30M200 186l46-36M200 146l-28-38M200 138l32-42" />
+        <circle cx="152" cy="102" r="22" opacity=".45" />
+        <circle cx="248" cy="102" r="18" opacity=".4" />
+        <circle cx="168" cy="170" r="16" opacity=".3" />
+        <circle cx="268" cy="146" r="14" opacity=".3" />
+        <path d="M96 74c6-8 14-8 20 0M118 168c5-7 11-7 16 0" opacity=".45" />
+        <path d="M300 200c-8 8-20 8-28 0M66 214c-6 6-14 6-20 0" opacity=".35" />
+        <path d="M36 226h328" opacity=".3" />
+      </g>
+    )
+  }
+  {
+    scene === 'cat' && (
+      <g>
+        <circle cx="150" cy="96" r="24" />
+        <path d="M132 80l-6-20 20 9M168 80l6-20-20 9" />
+        <path d="M142 96h.1M158 96h.1" opacity=".9" />
+        <path d="M150 104v3M142 110h16" opacity=".8" />
+        <path d="M128 106l-18-4M128 113l-18 4M172 106l18-4M172 113l18 4" opacity=".6" />
+        <path d="M132 122h36v52c0 11-8 20-18 20s-18-9-18-20z" />
+        <path d="M168 180c24 0 28-18 18-32" />
+        <path d="M132 146h36M132 162h36" opacity=".35" />
+        <path d="M36 224h328" opacity=".3" />
+      </g>
+    )
+  }
+</svg>

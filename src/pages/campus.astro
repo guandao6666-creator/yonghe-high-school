@@ -1,0 +1,75 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import SceneArt from '../components/SceneArt.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { campusTiles, campusNote } from '../data/school';
+import { videos } from '../data/videos';
+
+const campusVideos = [videos[5], videos[1], videos[2]];
+---
+
+<Base
+  title="校园风光"
+  description="永和高中校园风光：红砖教学楼、银灰穹顶、大校门、运动场、教室、秋日校园与校园猫「永和老学长」。"
+>
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <nav class="breadcrumb" aria-label="面包屑">
+        <a href="/">首页</a>
+        <span>/</span>
+        <span>校园风光</span>
+      </nav>
+      <h1>校园风光</h1>
+      <p>
+        红砖教学楼、银灰色穹顶、石柱门楼与红色跑道——永和高中有一副很好认的样子。
+        这一页把镜头里的校园整理成六个画面。
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle
+          kicker="Scenes"
+          title="六个熟悉的<em>校园画面</em>"
+          desc="插图根据学校官方抖音公开画面绘制，正式照片素材正在整理中。"
+        />
+      </div>
+      <div class="tile-grid">
+        {
+          campusTiles.map((tile) => (
+            <article class={`tile tile--${tile.key} reveal`}>
+              <span class="tile-bg" />
+              <SceneArt scene={tile.key} />
+              <div class="tile-body">
+                <h3>{tile.title}</h3>
+                <p>{tile.desc}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+      <p style="margin-top:22px;font-size:12px;color:var(--muted)">{campusNote}</p>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle
+          kicker="On Douyin"
+          title="镜头里的永和"
+          desc="下面的视频来自学校官方账号与师生账号。点击卡片可直接在抖音查看原视频。"
+        />
+      </div>
+      <div class="video-grid">
+        {campusVideos.map((video) => <VideoCard video={video} />)}
+      </div>
+      <p style="margin-top:22px">
+        <a href="/news/" style="color:var(--red-700);font-weight:600">查看全部校园动态 →</a>
+      </p>
+    </div>
+  </section>
+</Base>

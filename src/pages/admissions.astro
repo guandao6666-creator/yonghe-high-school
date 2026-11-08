@@ -1,0 +1,112 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import { school } from '../data/school';
+
+const faqs = [
+  {
+    q: '学校是什么性质的学校？',
+    a: '民办公助的全日制普通高级中学，2004 年 11 月由怡和控股发展有限公司投资创办，按省级示范性普通高中标准建设。',
+  },
+  {
+    q: '班型是怎么设置的？',
+    a: '实行小班分层教学，每班约 50 人，设宏志班、实验班、平行班，按学生基础分层组织教学与辅导。',
+  },
+  {
+    q: '住宿和日常管理怎么样？',
+    a: '学校实行全封闭管理：专业保安与寝管员值守、安防监控、班主任「六到岗」、门卫凭胸卡准入；学生公寓 5 栋 900 间，配备空调。',
+  },
+  {
+    q: '能共享哪些教学资源？',
+    a: '学校与清华附中网校合作，学生可同步学习名校特级教师课程资源；教室配备多媒体教学设备。',
+  },
+];
+---
+
+<Base
+  title="招生信息"
+  description="固始县永和高级中学招生信息整理：办学性质、班型设置、住宿管理与到校方式。招生政策以学校官方发布为准。"
+>
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <nav class="breadcrumb" aria-label="面包屑">
+        <a href="/">首页</a>
+        <span>/</span>
+        <span>招生信息</span>
+      </nav>
+      <h1>招生信息</h1>
+      <p>
+        这里整理学校公开可查的办学信息，方便家长和同学快速了解。2026 年招生简章等一手政策
+        仍以学校官方发布为准。
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="notice reveal">
+        <strong>整理说明：</strong>
+        学校 2026 年招生简章目前发布在微信公众号，网页端被环境验证拦截，暂未取得完整文本。
+        本页只收录已核实的办学信息，具体招生计划、分数线与收费标准请以学校官方公告为准。
+      </div>
+
+      <div style="margin-top:40px" class="reveal">
+        <SectionTitle kicker="FAQ" title="常见问题" desc="根据学校公开资料整理的四个问题，覆盖家长最常问的方面。" />
+      </div>
+      <div class="grid grid--2">
+        {
+          faqs.map((item) => (
+            <article class="card reveal">
+              <h3 style="font-size:18px;letter-spacing:.04em">{item.q}</h3>
+              <p style="margin-top:12px;font-size:14.5px;color:var(--muted)">{item.a}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle kicker="Visit" title="到校与咨询" desc="学校位于固始县城北环路中段，地图坐标 115.681674, 32.201706。" />
+      </div>
+      <div class="grid grid--2">
+        <article class="card reveal">
+          <h3 style="font-size:18px">学校地址</h3>
+          <p style="margin-top:12px;color:var(--muted)">{school.address}</p>
+          <p style="margin-top:8px;font-size:13px;color:var(--muted)">
+            地图坐标：{school.coords.lng}, {school.coords.lat}
+          </p>
+          <p style="margin-top:20px">
+            <a
+              class="btn"
+              style="background:var(--red-700);color:var(--cream);padding:11px 22px"
+              href="https://map.baidu.com/search/%E5%9B%BA%E5%A7%8B%E5%8E%BF%E6%B0%B8%E5%92%8C%E9%AB%98%E7%BA%A7%E4%B8%AD%E5%AD%A6"
+              target="_blank"
+              rel="noopener noreferrer">在百度地图中查看 ↗</a
+            >
+          </p>
+        </article>
+        <article class="card reveal">
+          <h3 style="font-size:18px">联系方式</h3>
+          <p style="margin-top:12px;color:var(--muted)">
+            招生咨询电话与官方公众号信息整理中。可先通过学校官方抖音账号了解校园动态与发布通知。
+          </p>
+          <p style="margin-top:20px">
+            <a
+              class="btn"
+              style="background:var(--red-700);color:var(--cream);padding:11px 22px"
+              href="https://www.douyin.com/search/%E5%9B%BA%E5%A7%8B%E5%8E%BF%E6%B0%B8%E5%92%8C%E9%AB%98%E7%BA%A7%E4%B8%AD%E5%AD%A6"
+              target="_blank"
+              rel="noopener noreferrer">在抖音中搜索学校 ↗</a
+            >
+          </p>
+        </article>
+      </div>
+      <div class="notice reveal" style="margin-top:32px;font-size:13px">
+        本页为个人整理的信息页，不是学校官方招生页面；招生政策、报名时间与录取规则以学校及教育主管部门发布为准。
+      </div>
+    </div>
+  </section>
+</Base>

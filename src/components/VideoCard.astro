@@ -1,0 +1,29 @@
+---
+import type { VideoItem } from '../data/videos';
+
+interface Props {
+  video: VideoItem;
+}
+const { video } = Astro.props;
+---
+
+<a class="video-card" href={video.url} target="_blank" rel="noopener noreferrer">
+  <div class="video-top">
+    <span class="video-tag">{video.tag}</span>
+    <span class="video-play" aria-hidden="true">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+        <path d="M2.5 1.5 10.5 6l-8 4.5z"></path>
+      </svg>
+    </span>
+  </div>
+  <h3>{video.title}</h3>
+  <p class="desc">{video.desc}</p>
+  <div class="video-meta">
+    <span class="src">
+      <span>{video.account}</span>
+      <span aria-hidden="true">·</span>
+      <span>{video.date}</span>
+    </span>
+    <span class="likes">♥ {video.likes}</span>
+  </div>
+</a>

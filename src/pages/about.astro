@@ -1,0 +1,172 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import Crest from '../components/Crest.astro';
+import {
+  school,
+  honors,
+  features,
+  timeline,
+  achievements,
+  aboutParagraphs,
+} from '../data/school';
+
+const profile = [
+  { label: '学校名称', value: school.name },
+  { label: '英文名', value: school.englishName },
+  { label: '办学性质', value: '民办公助 · 全日制普通高级中学' },
+  { label: '创办时间', value: '2004 年 11 月' },
+  { label: '校址', value: '固始县城北环路中段' },
+  { label: '校园占地', value: '240 亩' },
+  { label: '办学规模', value: '92 个教学班 / 在校生 6000 余人' },
+  { label: '教师', value: '332 人' },
+  { label: '现任校长', value: school.principal },
+  { label: '校区', value: '本部（城北）＋ 西校区（2021 年启用）' },
+];
+---
+
+<Base
+  title="学校简介"
+  description="固始县永和高级中学学校简介：2004 年创办，民办公助，占地 240 亩，校训「永怀梦想，和衷共济」，河南省优秀民办学校、清华大学生源中学。"
+>
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <nav class="breadcrumb" aria-label="面包屑">
+        <a href="/">首页</a>
+        <span>/</span>
+        <span>学校简介</span>
+      </nav>
+      <h1>学校简介</h1>
+      <p>
+        从 2004 年建校至今，永和高中在固始县城北扎根二十余年。这一页整理了学校的基本档案、
+        校训与荣誉、办学特色与校史节点，资料均来自公开可查来源。
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle
+          kicker="Profile"
+          title="学校概况"
+          desc="以下信息整理自百度百科词条与学校公开资料，部分建设期数据可能已随学校发展更新。"
+        />
+      </div>
+      <div class="split">
+        <div class="prose reveal">
+          {aboutParagraphs.map((paragraph) => <p>{paragraph}</p>)}
+        </div>
+        <div class="reveal">
+          <div class="info-table">
+            {
+              profile.map((row) => (
+                <div class="row">
+                  <span>{row.label}</span>
+                  <strong>{row.value}</strong>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle
+          kicker="Motto"
+          title="校训与题字"
+          desc="「永怀梦想，和衷共济」是学校的校训；校名由姜春云题写，张黎上将题写「诚信、和谐、勤奋、创新」。"
+        />
+      </div>
+      <div class="split">
+        <div class="motto-card reveal">
+          <Crest size={72} withText />
+          <p class="motto">永怀梦想<br />和衷共济</p>
+          <p class="motto-sub">校训 · SCHOOL MOTTO</p>
+        </div>
+        <div class="reveal">
+          <h3 style="font-size:20px;letter-spacing:.06em;margin-bottom:16px">学校荣誉</h3>
+          <div class="chips">
+            {honors.map((honor) => <span class="chip">{honor.title}</span>)}
+          </div>
+          <div class="notice" style="margin-top:28px">
+            校名与八字题字为公开资料记载；如学校后续更新表述，以学校官方发布为准。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle
+          kicker="Features"
+          title="办学特色"
+          desc="全封闭、小班化、共享名校课程资源，是永和高中被家长反复提到的几个关键词。"
+        />
+      </div>
+      <div class="grid grid--2">
+        {
+          features.map((feature, index) => (
+            <article class="card feature reveal">
+              <span class="feature-num">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{feature.title}</h3>
+              <p>{feature.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container split">
+      <div class="reveal">
+        <SectionTitle kicker="History" title="校史沿革" />
+        <ul class="timeline">
+          {
+            timeline.map((item) => (
+              <li>
+                <span class="year">{item.year}</span>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="reveal">
+        <SectionTitle kicker="Results" title="教学成绩" />
+        <div class="grid grid--2">
+          {
+            achievements.map((item) => (
+              <div class="card" style="padding:24px">
+                <div class="stat-value" style="font-size:30px">{item.value}</div>
+                <div class="stat-label" style="margin-top:8px">{item.label}</div>
+                <div class="stat-note">{item.note}</div>
+              </div>
+            ))
+          }
+        </div>
+        <div class="notice" style="margin-top:24px;font-size:13px">
+          成绩数据来自百科词条收录的历史资料（近年数据未公开更新），仅作参考。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="notice reveal">
+        <strong>资料来源：</strong>
+        百度百科「固始永和高级中学」词条（2026-11-08 读取）与学校官方抖音账号公开视频。
+        本站为非官方信息整理站点；如需引用，请以学校官方发布为准。
+      </div>
+    </div>
+  </section>
+</Base>

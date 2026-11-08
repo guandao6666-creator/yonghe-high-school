@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { videos, douyinNote } from '../data/videos';
+
+const accounts = [
+  '固始县永和高级中学官方账号（永和高中）',
+  '班主任寄语·永和高中',
+  '永和·砥行高二',
+  '逐梦冲刺（奋楫版）·永和高中',
+  '笃行致远·永和高中·攀峰逐梦',
+  '永和.云中山峰',
+  '永和-追光而行',
+  '固始孩子王',
+  '永和中学',
+  '固始县城南永和高级中学',
+];
+---
+
+<Base
+  title="校园动态"
+  description="永和高中校园动态：优质课大赛、班主任家访、师生日常、运动会与校园秋景，整理自学校官方与师生抖音账号的公开视频。"
+>
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <nav class="breadcrumb" aria-label="面包屑">
+        <a href="/">首页</a>
+        <span>/</span>
+        <span>校园动态</span>
+      </nav>
+      <h1>校园动态</h1>
+      <p>
+        优质课大赛、深夜家访、运动会、秋天的落叶和教室里被抱起来的学生——
+        这些是永和高中在抖音上被看见的日常，按时间整理在这里。
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle
+          kicker="Moments"
+          title="近期校园视频"
+          desc="共收录 8 条已逐条查看的公开视频；标题与数据整理自页面展示，画面内容由人工观看整理。"
+        />
+      </div>
+      <div class="video-grid">
+        {videos.map((video) => <VideoCard video={video} />)}
+      </div>
+      <p style="margin-top:22px;font-size:12px;color:var(--muted)">{douyinNote}</p>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle
+          kicker="Accounts"
+          title="在哪些账号里能看到永和"
+          desc="学校在抖音形成了一个官方号 + 班级号 + 教师号的内容矩阵，以下为公开显示的账号名称。"
+        />
+      </div>
+      <div class="chips reveal">
+        {accounts.map((account) => <span class="chip">{account}</span>)}
+      </div>
+      <div class="notice reveal" style="margin-top:28px;font-size:13px">
+        账号名称来自抖音搜索页与视频页的公开显示，部分为师生个人或班级账号，非学校官方运营。
+      </div>
+    </div>
+  </section>
+</Base>

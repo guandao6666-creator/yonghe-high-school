@@ -1,0 +1,184 @@
+---
+import Base from '../layouts/Base.astro';
+import HeroArt from '../components/HeroArt.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import VideoCard from '../components/VideoCard.astro';
+import SceneArt from '../components/SceneArt.astro';
+import Crest from '../components/Crest.astro';
+import {
+  school,
+  stats,
+  honors,
+  features,
+  campusTiles,
+  aboutParagraphs,
+} from '../data/school';
+import { videos, douyinNote } from '../data/videos';
+
+const previewVideos = videos.slice(0, 3);
+const previewTiles = campusTiles.slice(0, 3);
+---
+
+<Base
+  title="首页"
+  description="固始县永和高级中学：2004 年创办于固始县城北环路中段，校训「永怀梦想，和衷共济」。学校简介、校园风光、校园动态与招生信息。"
+>
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <span class="hero-kicker">Gushi Yonghe High School</span>
+        <h1>固始县永和高级中学</h1>
+        <p class="hero-en">Founded 2004 · Gushi, Henan</p>
+        <p class="hero-motto">{school.motto}</p>
+        <p class="hero-sub">
+          红砖与银顶之间，是一所创办于 2004 年的民办公助高中。这里记录它的样子、它的课堂，
+          以及一届又一届永和人的青春。
+        </p>
+        <div class="hero-badges">
+          <span>河南省优秀民办学校</span>
+          <span>清华大学生源中学</span>
+          <span>信阳市示范性普通高中</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/about/">认识永和 →</a>
+          <a class="btn btn-ghost" href="/campus/">看看校园</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <HeroArt />
+      </div>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="container stats-inner">
+      {
+        stats.map((stat) => (
+          <div class="stat">
+            <div class="stat-value">
+              {stat.value}
+              {stat.unit && <span class="unit">{stat.unit}</span>}
+            </div>
+            <div class="stat-label">{stat.label}</div>
+            <div class="stat-note">{stat.note}</div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container split">
+      <div class="prose reveal">
+        <SectionTitle
+          kicker="About"
+          title="一所从<em>2004</em> 年走来的高中"
+          desc="民办公助、全封闭管理、小班分层教学——永和高中用二十余年时间，成为固始县城北一张熟悉的教育名片。"
+        />
+        <p>{aboutParagraphs[0]}</p>
+        <p>{aboutParagraphs[1]}</p>
+        <p style="margin-top:22px">
+          <a href="/about/" style="color:var(--red-700);font-weight:600;letter-spacing:.04em">
+            继续阅读学校简介与校史 →
+          </a>
+        </p>
+      </div>
+
+      <div class="motto-card reveal">
+        <Crest size={76} />
+        <p class="motto">永怀梦想<br />和衷共济</p>
+        <p class="motto-sub">校训 · SCHOOL MOTTO</p>
+        <a class="motto-link" href="/about/">查看学校档案与荣誉 →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle
+          kicker="Features"
+          title="把书教好，也把人照顾好"
+          desc="全封闭管理、小班分层、清华附中网校与完善的生活配套——这些是家长最关心的日常。"
+        />
+      </div>
+      <div class="grid grid--2">
+        {
+          features.map((feature, index) => (
+            <article class="card feature reveal">
+              <span class="feature-num">{String(index + 1).padStart(2, '0')}</span>
+              <h3>{feature.title}</h3>
+              <p>{feature.desc}</p>
+            </article>
+          ))
+        }
+      </div>
+      <div class="chips reveal" style="margin-top:32px">
+        {honors.map((honor) => <span class="chip">{honor.title}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle
+          kicker="Campus"
+          title="红砖、银顶与<em>一块黑板</em>"
+          desc="从校门到操场，从晚自习的教室到秋天的落叶——这里是永和高中被镜头记录下来的样子。"
+        />
+      </div>
+      <div class="tile-grid">
+        {
+          previewTiles.map((tile) => (
+            <a class={`tile tile--${tile.key} reveal`} href="/campus/">
+              <span class="tile-bg" />
+              <SceneArt scene={tile.key} />
+              <div class="tile-body">
+                <h3>{tile.title}</h3>
+                <p>{tile.desc}</p>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+      <p style="margin-top:22px;font-size:12px;color:var(--muted)">
+        图中为根据公开画面绘制的示意图，正式照片素材整理中。
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle
+          kicker="Moments"
+          title="校园动态"
+          desc="优质课大赛、班主任家访、运动会与秋天的校园随拍——来自学校官方和师生账号的公开内容。"
+        />
+      </div>
+      <div class="video-grid">
+        {previewVideos.map((video) => <VideoCard video={video} />)}
+      </div>
+      <p style="margin-top:22px;font-size:12px;color:var(--muted)">{douyinNote}</p>
+      <p style="margin-top:10px">
+        <a href="/news/" style="color:var(--red-700);font-weight:600">查看全部校园动态 →</a>
+      </p>
+    </div>
+  </section>
+
+  <div class="cta-wrap">
+    <div class="container">
+      <div class="cta reveal">
+        <div>
+          <h2>想来看看这所学校？</h2>
+          <p>
+            学校位于固始县城北环路中段。招生信息、校园平面图与联系方式仍在整理中，
+            可在「招生信息」与「联系我们」页面查看最新内容。
+          </p>
+        </div>
+        <a class="btn btn-primary" href="/admissions/">招生信息 →</a>
+      </div>
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base
+  title="页面不存在"
+  description="你访问的页面不存在，可能是链接已过期或地址输入有误。"
+>
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <nav class="breadcrumb" aria-label="面包屑">
+        <a href="/">首页</a>
+        <span>/</span>
+        <span>404</span>
+      </nav>
+      <h1>这个页面不存在</h1>
+      <p>链接可能已经过期，或者地址输入有误。你可以回到首页，从导航继续浏览。</p>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="grid grid--2">
+        <article class="card reveal">
+          <h3 style="font-size:19px">回到首页</h3>
+          <p style="margin-top:14px;font-size:15px;color:var(--ink-2)">
+            首页汇总了学校简介、校园风光、校园动态与招生信息几个主要入口。
+          </p>
+          <p style="margin-top:18px"><a class="btn" href="/">返回首页 →</a></p>
+        </article>
+        <article class="card reveal">
+          <h3 style="font-size:19px">看看校园动态</h3>
+          <p style="margin-top:14px;font-size:15px;color:var(--ink-2)">
+            这里整理了学校官方抖音账号公开发布的校园视频，按时间排列。
+          </p>
+          <p style="margin-top:18px">
+            <a class="btn btn--ghost" href="/news/">校园动态 →</a>
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+</Base>
