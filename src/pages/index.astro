@@ -12,9 +12,11 @@ import {
   aboutParagraphs,
 } from '../data/school';
 import { videos, douyinNote } from '../data/videos';
+import { honorRoll } from '../data/honors';
 
 const previewVideos = videos.slice(0, 3);
 const previewTiles = campusTiles.slice(0, 3);
+const previewHonors = [honorRoll[0], honorRoll[6], honorRoll[1]];
 
 const heroSlides = [
   {
@@ -226,6 +228,32 @@ const heroSlides = [
     <div class="container">
       <div class="reveal">
         <SectionTitle
+          kicker="Honor"
+          title="荣誉榜"
+          desc="2026 年高考录取速递、学校荣誉与赛事成绩——好信息单独整理成一页。"
+        />
+      </div>
+      <div class="honor-grid">
+        {
+          previewHonors.map((student) => (
+            <article class="honor-card reveal">
+              <span class="honor-batch">{student.batch}</span>
+              <h3 class="honor-name">{student.name}</h3>
+              <p class="honor-school">{student.university}</p>
+            </article>
+          ))
+        }
+      </div>
+      <p style="margin-top:22px">
+        <a href="/honors/" style="color:var(--red-700);font-weight:600">查看完整荣誉榜 →</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle
           kicker="Features"
           title="把书教好，也把人照顾好"
           desc="全封闭管理、小班分层、清华附中网校与完善的生活配套——这些是家长最关心的日常。"
@@ -248,7 +276,7 @@ const heroSlides = [
     </div>
   </section>
 
-  <section class="section section--paper">
+  <section class="section section--cream">
     <div class="container">
       <div class="reveal">
         <SectionTitle
@@ -282,7 +310,7 @@ const heroSlides = [
     </div>
   </section>
 
-  <section class="section section--cream">
+  <section class="section section--paper">
     <div class="container">
       <div class="reveal">
         <SectionTitle

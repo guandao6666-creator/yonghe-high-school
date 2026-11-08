@@ -1,0 +1,135 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import { honors, achievements } from '../data/school';
+import { honorRoll, honorRollSources, honorRollNote, eventHonors } from '../data/honors';
+---
+
+<Base
+  title="荣誉榜"
+  description="永和高中荣誉榜：2026 年高考录取速递（节选 12 位同学）、学校荣誉与教学成绩、县田径运动会与体考出征等赛事活动。"
+>
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <nav class="breadcrumb" aria-label="面包屑">
+        <a href="/">首页</a>
+        <span>/</span>
+        <span>荣誉榜</span>
+      </nav>
+      <h1>荣誉榜</h1>
+      <p>
+        2026 年高考录取速递、学校荣誉与教学成绩、赛事活动——把学校公开分享过的好消息，
+        整理成一页。
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle
+          kicker="Honor Roll 2026"
+          title="2026 届<em>录取速递</em>"
+          desc="以下 12 位同学来自学校「2026 年高考录取速递（一）」「（三）」喜报画面，按视频出现顺序整理。"
+        />
+      </div>
+      <div class="honor-grid">
+        {
+          honorRoll.map((student) => (
+            <article class="honor-card reveal">
+              <span class="honor-batch">{student.batch}</span>
+              <h3 class="honor-name">{student.name}</h3>
+              <p class="honor-school">{student.university}</p>
+            </article>
+          ))
+        }
+      </div>
+      <div class="notice reveal" style="margin-top:26px;font-size:13px">{honorRollNote}</div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle
+          kicker="Honors"
+          title="学校荣誉与<em>教学成绩</em>"
+          desc="荣誉与成绩来自学校公开资料；具体数据以学校官方最新发布为准。"
+        />
+      </div>
+      <div class="chips reveal">
+        {honors.map((honor) => <span class="chip">{honor.title}</span>)}
+      </div>
+      <div class="grid grid--2" style="margin-top:26px">
+        {
+          achievements.map((item) => (
+            <article class="card feature reveal">
+              <div class="stat-value" style="font-size:34px">
+                {item.value}
+              </div>
+              <h3>{item.label}</h3>
+              <p>{item.note}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle
+          kicker="Events"
+          title="赛事与<em>活动</em>"
+          desc="运动会、体考出征、优质课大赛与开幕式方阵——近几年被镜头记录下的校园荣誉时刻。"
+        />
+      </div>
+      <div class="grid grid--2">
+        {
+          eventHonors.map((item) => (
+            <article class="card feature reveal">
+              <span class="feature-num">{item.year}</span>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+              <p style="margin-top:14px">
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="color:var(--red-700);font-weight:600;font-size:13px"
+                >
+                  {item.linkLabel} ↗
+                </a>
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="reveal">
+        <SectionTitle kicker="Sources" title="资料来源" desc="本站为非官方整理站点。" />
+      </div>
+      <ul class="source-list reveal">
+        <li>百度百科「固始永和高级中学」词条（2026-11-08 读取）</li>
+        {
+          honorRollSources.map((source) => (
+            <li>
+              <a href={source.url} target="_blank" rel="noopener noreferrer">
+                {source.label}（抖音公开视频）
+              </a>
+            </li>
+          ))
+        }
+        <li>学校官方抖音账号与师生账号公开视频（2026-11-08 采集）</li>
+      </ul>
+      <div class="notice reveal" style="margin-top:22px;font-size:13px">
+        荣誉榜内容仅作信息整理与展示；如名单、院校与学校官方信息不符，请以学校官方发布为准。
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1410,3 +1410,90 @@ button {
     padding: 32px 24px;
   }
 }
+
+/* ------------------------------------------------------------------
+   荣誉榜
+------------------------------------------------------------------- */
+.honor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.honor-card {
+  position: relative;
+  padding: 22px 22px 20px 26px;
+  background: #fff;
+  border: 1px solid rgba(63, 17, 14, 0.1);
+  border-radius: 14px;
+  box-shadow: 0 16px 30px -26px rgba(63, 17, 14, 0.5);
+}
+
+.honor-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 18px;
+  bottom: 18px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--gold), var(--gold-soft));
+}
+
+.honor-batch {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.honor-name {
+  margin: 8px 0 4px;
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--red-800);
+  letter-spacing: 0.04em;
+}
+
+.honor-school {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ink-2);
+}
+
+.source-list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--ink-2);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.source-list a {
+  color: var(--red-700);
+}
+
+@media (max-width: 960px) {
+  .honor-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .honor-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .honor-card {
+    padding: 16px 16px 14px 18px;
+  }
+
+  .honor-name {
+    font-size: 20px;
+  }
+
+  .honor-school {
+    font-size: 12.5px;
+  }
+}
