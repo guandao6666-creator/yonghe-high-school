@@ -21,7 +21,7 @@ export interface TimelineItem {
 }
 
 export interface CampusTile {
-  key: 'gate' | 'zhili' | 'track' | 'zhixing' | 'blossom' | 'inscription';
+  key: 'gate' | 'zhili' | 'track' | 'zhixing' | 'blossom' | 'inscription' | 'canteen' | 'kitchen' | 'dining';
   title: string;
   desc: string;
   photo: string;
@@ -151,6 +151,27 @@ export const campusTiles: CampusTile[] = [
     photo: '/photos/inscription.jpg',
     photoAlt: '校门内墙上的金色校名题字与落款',
   },
+  {
+    key: 'canteen',
+    title: '食堂 · 今日菜色',
+    desc: '刚出锅的时令小炒，一份份分装到餐盘，等待开餐。',
+    photo: '/photos/canteen-food.jpg',
+    photoAlt: '食堂操作台上摆满分装好的菜盘',
+  },
+  {
+    key: 'kitchen',
+    title: '食堂 · 明厨亮灶',
+    desc: '后厨师傅在操作间现炒，口罩与工作服齐备，操作流程看得见。',
+    photo: '/photos/canteen-cook.jpg',
+    photoAlt: '穿工作服、戴口罩的食堂师傅在大锅前炒菜',
+  },
+  {
+    key: 'dining',
+    title: '食堂 · 用餐时光',
+    desc: '食堂大厅里同学们围桌用餐，顶上挂着一排红灯笼。',
+    photo: '/photos/canteen-dining.jpg',
+    photoAlt: '食堂大厅里学生围桌用餐，天花板挂着红灯笼',
+  },
 ];
 
 export const campusPhoto = {
@@ -160,4 +181,4 @@ export const campusPhoto = {
 };
 
 export const campusNote =
-  '校园实拍照片由学校师生提供；首页航拍照片截取自公开抖音视频（@printf），仅用于本站展示。如涉版权请联系我们删除。';
+  '校园实拍照片由学校师生提供；首页航拍照片截取自公开抖音视频（@printf），食堂照片截取自学校官方抖音视频（@永和高中），仅用于本站展示。如涉版权请联系我们删除。';
