@@ -400,11 +400,26 @@ button {
   box-shadow: 0 42px 72px -36px rgba(0, 0, 0, 0.62);
 }
 
-.hero-photo img {
+.carousel-viewport {
+  position: relative;
+  aspect-ratio: 4 / 3;
+}
+
+.carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+
+.carousel-slide[data-active="true"] {
+  opacity: 1;
+}
+
+.carousel-slide img {
   display: block;
   width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 3;
+  height: 100%;
   object-fit: cover;
 }
 
@@ -417,14 +432,54 @@ button {
   pointer-events: none;
 }
 
-.hero-photo figcaption {
+.carousel-caption {
   position: absolute;
   left: 18px;
   bottom: 14px;
-  z-index: 1;
+  margin: 0;
+  z-index: 2;
   font-size: 12px;
   letter-spacing: 0.2em;
-  color: rgba(247, 242, 232, 0.82);
+  color: rgba(247, 242, 232, 0.85);
+}
+
+.carousel-dots {
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-dots[hidden] {
+  display: none;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 1px solid rgba(247, 242, 232, 0.55);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.carousel-dot:hover {
+  border-color: var(--gold-soft);
+}
+
+.carousel-dot[aria-selected="true"] {
+  background: var(--gold-soft);
+  border-color: var(--gold-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-slide {
+    transition: none;
+  }
 }
 
 /* ---------------------------------- stats ---------------------------------- */

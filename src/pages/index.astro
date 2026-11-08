@@ -15,6 +15,29 @@ import { videos, douyinNote } from '../data/videos';
 
 const previewVideos = videos.slice(0, 3);
 const previewTiles = campusTiles.slice(0, 3);
+
+const heroSlides = [
+  {
+    src: '/photos/hero-gate.jpg',
+    alt: '傍晚的永和高中校门：银灰穹顶、红砖主楼与金色校名题字',
+    caption: '校门 · 傍晚',
+  },
+  {
+    src: '/photos/zhili.jpg',
+    alt: '红砖立面的知理楼，楼身有金色「知理楼」三字',
+    caption: '知理楼 · 红砖与香樟',
+  },
+  {
+    src: '/photos/corridor.jpg',
+    alt: '傍晚的走廊，窗外是落日与「和馨」楼',
+    caption: '走廊 · 落日',
+  },
+  {
+    src: '/photos/track.jpg',
+    alt: '红色跑道与绿茵场，远处是红砖教学楼和成排绿树',
+    caption: '运动场 · 红色跑道',
+  },
+];
 ---
 
 <Base
@@ -42,16 +65,42 @@ const previewTiles = campusTiles.slice(0, 3);
           <a class="btn btn-ghost" href="/campus/">看看校园</a>
         </div>
       </div>
-      <figure class="hero-photo reveal">
-        <img
-          src="/photos/hero-gate.jpg"
-          alt="傍晚的永和高中校门：银灰穹顶、红砖主楼与金色校名题字"
-          width="1400"
-          height="1050"
-          fetchpriority="high"
-          decoding="async"
-        />
-        <figcaption>校门 · 傍晚</figcaption>
+      <figure class="hero-photo hero-carousel reveal" data-carousel>
+        <div class="carousel-viewport">
+          {
+            heroSlides.map((slide, i) => (
+              <div
+                class="carousel-slide"
+                data-active={i === 0 ? 'true' : 'false'}
+                data-caption={slide.caption}
+              >
+                <img
+                  src={slide.src}
+                  alt={slide.alt}
+                  width="1400"
+                  height="1050"
+                  loading={i === 0 ? 'eager' : 'lazy'}
+                  fetchpriority={i === 0 ? 'high' : 'auto'}
+                  decoding="async"
+                />
+              </div>
+            ))
+          }
+        </div>
+        <figcaption class="carousel-caption">{heroSlides[0].caption}</figcaption>
+        <div class="carousel-dots" hidden>
+          {
+            heroSlides.map((slide, i) => (
+              <button
+                class="carousel-dot"
+                type="button"
+                data-index={i}
+                aria-label={`切换到：${slide.caption}`}
+                aria-selected={i === 0 ? 'true' : 'false'}
+              />
+            ))
+          }
+        </div>
       </figure>
     </div>
   </section>
@@ -192,4 +241,58 @@ const previewTiles = campusTiles.slice(0, 3);
       </div>
     </div>
   </div>
+
+  <script>
+    // 首屏大图轮播：有 JS 才启用；无 JS 时只显示第一张，不报错
+    const carousel = document.querySelector('[data-carousel]');
+    if (carousel) {
+      const slides = Array.from(carousel.querySelectorAll('.carousel-slide'));
+      const dots = Array.from(carousel.querySelectorAll('.carousel-dot'));
+      const caption = carousel.querySelector('.carousel-caption');
+      const dotsWrap = carousel.querySelector('.carousel-dots');
+
+      if (slides.length > 1 && dotsWrap) {
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let index = 0;
+        let timer: number | null = null;
+
+        const show = (next: number) => {
+          index = (next + slides.length) % slides.length;
+          slides.forEach((slide, i) => {
+            slide.dataset.active = i === index ? 'true' : 'false';
+          });
+          dots.forEach((dot, i) => {
+            dot.setAttribute('aria-selected', i === index ? 'true' : 'false');
+          });
+          if (caption) caption.textContent = slides[index].dataset.caption || '';
+        };
+
+        const stop = () => {
+          if (timer !== null) {
+            window.clearInterval(timer);
+            timer = null;
+          }
+        };
+
+        const start = () => {
+          if (reducedMotion) return;
+          stop();
+          timer = window.setInterval(() => show(index + 1), 5200);
+        };
+
+        dotsWrap.hidden = false;
+        dots.forEach((dot, i) =>
+          dot.addEventListener('click', () => {
+            show(i);
+            start();
+          })
+        );
+        carousel.addEventListener('pointerenter', stop);
+        carousel.addEventListener('pointerleave', start);
+        carousel.addEventListener('focusin', stop);
+        carousel.addEventListener('focusout', start);
+        start();
+      }
+    }
+  </script>
 </Base>
